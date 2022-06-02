@@ -6,6 +6,17 @@ sap.ui.define([
 ], function (UIComponent, Device, models, ErrorHandler) {
 	"use strict";
 
+	// check for BSP environment and set reuse library path
+	
+	// var i = window.location.pathname.indexOf("/ui5_ui5/");
+	var iLocalHost = window.location.origin.indexOf("localhost");
+	if (iLocalHost !== -1){
+	 	var sOriginPath = window.location.origin + "/sabas.common.lib/src/SABAS/COMMON/LIB/";
+		// sOriginPath += "/sabas.common.lib/src/SABAS/COMMON/LIB/";
+		
+		$.sap.registerModulePath("SABAS.COMMON.LIB", sOriginPath);
+	} 
+
 	return UIComponent.extend("ns.deals.Component", {
 
 		metadata : {

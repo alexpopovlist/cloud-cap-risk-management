@@ -2,7 +2,8 @@
 	controllerName="ns.deals.controller.Worklist"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.f.semantic">
+	xmlns:semantic="sap.f.semantic"
+	xmlns:custom="SABAS.COMMON.LIB.class">
 
 	<semantic:SemanticPage
 		id="page"
@@ -12,8 +13,10 @@
 		<semantic:titleHeading>
 			<Title text="{i18n>worklistTitle}" />
 		</semantic:titleHeading>
-
 		<semantic:content>
+			<custom:ETextHover text="FieldDesc"
+					allowHover="true"
+					hoverIn="onShowAvailabilityInfo"/>
 			<Table
 				id="table"
 				width="auto"
