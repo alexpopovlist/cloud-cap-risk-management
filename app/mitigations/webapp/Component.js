@@ -3,6 +3,7 @@ sap.ui.define([
 	"sap/ui/Device",
 	"./model/models",
 	"./controller/ErrorHandler"
+	// "./model/stateModel"
 ], function (UIComponent, Device, models, ErrorHandler) {
 	"use strict";
 
@@ -30,6 +31,9 @@ sap.ui.define([
 
 			// create the views based on the url/hash
 			this.getRouter().initialize();
+
+			// this.setModel(stateModel.createJSONModel(this), "state");
+			
 		},
 
 		/**

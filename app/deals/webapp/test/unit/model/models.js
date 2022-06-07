@@ -1,7 +1,8 @@
 sap.ui.define([
 	"ns/deals/model/models",
-	"sap/ui/Device"
-], function (models, Device) {
+	"sap/ui/Device",
+	"ns/deals/Constants"
+], function (models, Device, Constants) {
 	"use strict";
 
 	QUnit.module("createDeviceModel", {
@@ -18,7 +19,16 @@ sap.ui.define([
 		this.oDeviceModel = models.createDeviceModel();
 
 		// Assert
-		assert.strictEqual(this.oDeviceModel.getData().system.phone, bIsPhone, "IsPhone property is correct");
+
+		// assert.strictEqual(this.oDeviceModel.getData().system.phone, bIsPhone, "IsPhone property is correct");
+		// unit Test with parameters Constants * with feature flag *
+		
+		if (Constants.MAIN_FEATURE === true){
+			// Assert
+			assert.strictEqual(this.oDeviceModel.getData().system.phone, bIsPhone, "IsPhone property is correct : Constants.MAIN_FEATURE = true");
+		} else {
+			assert.strictEqual(this.oDeviceModel.getData().system.phone, bIsPhone, "IsPhone property is correct : Constants.MAIN_FEATURE = false");
+		}
 	}
 
 	QUnit.test("Should initialize a device model for desktop", function (assert) {
