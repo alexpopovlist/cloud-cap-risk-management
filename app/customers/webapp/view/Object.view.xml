@@ -1,0 +1,498 @@
+<mvc:View
+	controllerName="ns.customers.controller.Object"
+	xmlns="sap.m"
+	xmlns:blocks="ns.customers.view.blocks"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:uxap="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:table="sap.ui.table"
+	xmlns:custom="zgagarin.zsupplyproc.custom.class"
+	xmlns:u="sap.ui.unified"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:smartField="sap.ui.comp.smartfield">
+
+	<semantic:FullscreenPage showFooter="true"
+	                         id="page"
+	                         busy="{objectView>/busy}"
+	                         busyIndicatorDelay="{objectView>/delay}"
+	                         class="panelCollapsed">
+		<semantic:customHeaderContent>
+			<!-- <custom:CustomHeaderContainer id="id_TimeLineContainer"
+			                              class="customHeaderContainer"
+			                              visible="{state>/options/tabVisible/Header}"
+			                              selectionChange="onSelectionChange"
+			                              scrollStep="254"
+			                              scrollTime="500"
+			                              showDividers="false"
+			                              content="{path: 'to_Plan', parameters: {expand: 'to_Step_t'}}">
+				<custom:CustomNewsContent customClass="{
+									parts: ['base_plan', 'fact_date', 'current_step'],
+									formatter: '.Common.formatTimeLineTileClassesDependingOnPOStep'} {
+									path: 'deviation',
+									formatter: '.Common.formatTimeLineDateExpirationStateText'}"
+				                          footer="{
+									parts: ['fact_date', 'forecast_date', 'purch_plan', 'work_plan'],
+									formatter: '.Common.chooseWhichDateToShowForTimeLine'}">
+					<custom:content>
+						<NewsContent contentText="{to_Step_t/step_Text}"
+						             class="sapUiTinyMarginBottom" />
+					</custom:content>
+				</custom:CustomNewsContent>
+			</custom:CustomHeaderContainer> -->
+		</semantic:customHeaderContent>
+
+		<semantic:content>
+			<uxap:ObjectPageLayout id="ObjectPageLayout"
+			                       useIconTabBar="true"
+			                       navigate="onSectionSelectHandler"
+			                       enableLazyLoading="true"
+                             preserveHeaderStateOnScroll="true"
+			                       selectedSection="OvewrviewObjectPageSection"
+														 upperCaseAnchorBar="false"
+														 showTitleInHeaderContent="true"
+														 headerContentPinnable="false">
+				<uxap:headerTitle>
+					<!-- <uxap:ObjectPageHeader id="idObjectPageHeader"
+					                       headerDesign="Light"
+					                       objectTitle="Cocari - Cooperative Agropecuaria e Industrial"
+					                       showTitleSelector="false"
+					                       titleSelectorPress="handleTitleSelectorPress"
+					                       showMarkers="true"
+					                       objectSubtitle="{purch_name_txt}"
+					                       objectImageShape="Circle"
+					                       markLocked="{= ${HasDraftEntity} &amp;&amp; ${IsActiveEntity} &amp;&amp; !!${DraftAdministrativeData/InProcessByUser}}"
+					                       markLockedPress="onPressDraftInfoHandler"
+					                       markChanges="{= ${HasDraftEntity} &amp;&amp; ${IsActiveEntity} &amp;&amp; !${DraftAdministrativeData/InProcessByUser}}"
+					                       markChangesPress="onPressDraftInfoHandler"> -->
+        <uxap:ObjectPageDynamicHeaderTitle id="idObjectPageHeader"
+          primaryArea="Middle"
+          headerStateChange="onObjectHeaderStateChangeHandler"
+          >
+
+					<!-- <uxap:expandedHeading>
+						<HBox>
+							<Title text="Denise Smith" wrapping="true"/>
+						</HBox>
+					</uxap:expandedHeading>
+
+					<uxap:snappedHeading>
+						<FlexBox  fitContainer="true" alignItems="Center">
+							<Title text="Denise Smith" wrapping="true"/>
+						</FlexBox>
+					</uxap:snappedHeading> -->
+
+					<!-- <uxap:expandedContent>
+						<Title text="Senior UI Developer" wrapping="true"/>
+					</uxap:expandedContent>
+
+					<uxap:snappedContent>
+						<Title text="Senior UI Developer" wrapping="true"/>
+					</uxap:snappedContent> -->
+
+          <uxap:heading>
+			         <HBox wrap="Wrap" fitContainer="false" alignItems="Center" class="sapUiTinyMarginTop">
+				             <Title text="Cocari - Cooperative Agropecuaria e Industrial" wrapping="true" class="sapUiTinyMarginEnd"/>
+				       </HBox>
+		      </uxap:heading>
+
+
+						<!-- <uxap:expandedContent>
+							<Title text="Senior UI Developer" wrapping="true"/>
+						</uxap:expandedContent>
+
+						<uxap:snappedContent>
+							<Title text="Senior UI Developer" wrapping="true"/>
+						</uxap:snappedContent> -->
+            <!-- <uxap:expandedContent>
+              <Label text="{purch_name_txt}"/>
+            </uxap:expandedContent>
+            <uxap:snappedContent>
+              <Label text="{purch_name_txt}"/>
+            </uxap:snappedContent> -->
+            <uxap:actions>
+              <uxap:ObjectPageHeaderActionButton id="actionModify"
+							                                   type="Emphasized"
+							                                   text="{i18n>editButtonForObjectPage}"
+							                                   importance="High"
+							                                   hAlign="Center"
+							                                   press="onEditPressHandler"
+							                                   hideText="false"
+							                                   hideIcon="true"/>
+
+							<!-- <uxap:ObjectPageHeaderActionButton type="Transparent" id="action_2"
+							                                   text="{i18n>toInitiateOpeningButtonInObjectPage}"
+							                                   hAlign="Center"
+							                                   importance="Low"
+							                                   hideText="false"
+							                                   hideIcon="true"
+							                                   press="handleConfirmationMessageBoxPress"
+							                                   visible="{= ${Open_purch_ac} === true ? true : false}" />
+
+							<uxap:ObjectPageHeaderActionButton type="Transparent" id="action_3"
+							                                   text="{i18n>toConfirmPlanButtonInObjectPage}"
+							                                   importance="Low"
+							                                   hideText="false"
+							                                   hideIcon="true"
+							                                   press="onConfirmPlanButtonPress"
+							                                   visible="{= ${Confirm_plan_ac} === true ? true : false}" /> -->
+
+
+          	</uxap:actions>
+						<!-- <uxap:breadCrumbsLinks> -->
+							<!-- Breadcrumbs -->
+						<!-- </uxap:breadCrumbsLinks> -->
+          </uxap:ObjectPageDynamicHeaderTitle>
+					<!-- </uxap:ObjectPageHeader> -->
+				</uxap:headerTitle>
+				<uxap:headerContent>
+					<l:VerticalLayout id="headerColumn1" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+						<VBox>
+							<HBox alignItems="Inherit">
+								<ObjectStatus
+									inverted="true"
+									text="Active"
+									state="Success"
+									class=""/>
+
+									<ObjectStatus
+										inverted="true"
+										text="Wholesaler"
+										state="None"
+										class="sapUiSmallMarginBegin"/>
+							</HBox>
+						</VBox>
+					</l:VerticalLayout>
+					<!-- <l:VerticalLayout id="headerColumn2" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+						<VBox>
+							<HBox alignItems="Inherit">
+								<ObjectStatus
+									inverted="true"
+									text="Wholesaler"
+									state="Success" />
+							</HBox>
+						</VBox>
+					</l:VerticalLayout> -->
+					<l:VerticalLayout id="headerColumn2" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+						<VBox>
+							<HBox alignItems="Inherit">
+								<Label text="Verified with MDAS on 25.02.22 10:29" />
+								<!-- <Text text="stage"
+								      class="sapUiTinyMarginBegin" /> -->
+							</HBox>
+						</VBox>
+					</l:VerticalLayout>
+				</uxap:headerContent>
+
+				<uxap:sections>
+					<uxap:ObjectPageSection id="OverviewObjectPageSection"
+					                        title="{i18n>Overview}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="OverviewObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Overview id="OverviewObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="ProfileObjectPageSection"
+					                        title="{i18n>Profile}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="ProfileObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Profile id="ProfileObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="ContactsObjectPageSection"
+					                        title="{i18n>Contacts}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="ContactsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Contacts id="ContactsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="DeliveriesObjectPageSection"
+					                        title="{i18n>Deliveries}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="DeliveriesObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Deliveries id="DeliveriesObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="InvoicesObjectPageSection"
+					                        title="{i18n>Invoices}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="InvoicesObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Invoices id="InvoicesObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="CustomerServiceObjectPageSection"
+					                        title="{i18n>CustomerService}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="CustomerServiceObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:CustomerService id="CustomerServiceObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<!-- <uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/REQUIREMENTS'}"
+					                        id="MandatoryRequirementsObjectPageSection"
+					                        title="{i18n>mandatoryRequirements}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="MandatoryRequirementsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:MandatoryRequirements id="MandatoryRequirementsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/TECH_EVALUATION'}"
+					                        id="TechnicalEvaluationObjectPageSection"
+					                        title="{i18n>technicalEvaluation}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="TechnicalEvaluationObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:TechnicalEvaluation id="TechnicalEvaluationObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/FINANC_EVALUATION'}"
+					                        id="FinancialEvaluationObjectPageSection"
+					                        title="{i18n>financialAssessment}"
+                                  class="rsSubSectionNoPaddingBottom">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="FinancialEvaluationObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:FinancialEvaluation id="FinancialEvaluationObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/LIMITS'}"
+					                        id="LimitsObjectPageSection"
+					                        title="{i18n>limits}" class="rsSubSectionNoPaddingBottom">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="LimitsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Limits id="LimitsObjectPageSubSectionBlock"/>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/ECONOMY'}"
+					                        id="SavingsObjectPageSection"
+					                        title="{i18n>economy}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="SavingsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Savings id="SavingsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/PARTNERS'}"
+					                        id="SuppliersObjectPageSection"
+					                        title="{i18n>suppliers}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="SuppliersObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Suppliers id="SuppliersObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{=(${path: 'fc>/s/tabs/PLAN'})}"
+					                        id="PlanObjectPageSection"
+					                        title="{i18n>plan}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="PlanObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Plan id="PlanObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/POSITION'}"
+					                        id="ItemsObjectPageSection"
+					                        title="{i18n>records}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="ItemsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Items id="ItemsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/DOCUMENTS'}"
+					                        id="DocumentsObjectPageSection"
+					                        title="{i18n>documents}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="DocumentsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Documents id="DocumentsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/APPROVAL_SHEET'}"
+					                        id="WorkflowListObjectPageSection"
+					                        title="{i18n>acceptList}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="WorkflowListObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:WorkflowList id="WorkflowListObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/RELATED_OBJECTS'}"
+					                        id="LinkedObjectsObjectPageSection"
+					                        title="{i18n>relatedObjects}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="LinkedObjectsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:LinkedObjects id="LinkedObjectsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/COMMENTS'}"
+					                        id="CommentsObjectPageSection"
+					                        title="{i18n>comments}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="CommentsObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Comments id="CommentsObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection visible="{path: 'fc>/s/tabs/HISTORY'}"
+					                        id="ChangelogObjectPageSection"
+					                        title="{i18n>historyOfChange}"
+					                        showTitle="true">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="ChangelogObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Changelog id="ChangelogObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection> -->
+				</uxap:sections>
+			</uxap:ObjectPageLayout>
+		</semantic:content>
+		<!-- <semantic:messagesIndicator>
+			<semantic:MessagesIndicator id="ObjectMessagesIndicator"
+			                            press="onMessagesButtonPress" />
+		</semantic:messagesIndicator> -->
+		<!-- <semantic:draftIndicator>
+			<DraftIndicator id="objectDraftIndicator"
+			                state="Clear" />
+		</semantic:draftIndicator> -->
+		<semantic:saveAction>
+			<semantic:SaveAction visible="{= !!${path: 'fc>/s/ac/ZSM_C_COMP_HEADER_TP/ZACTIVATION'}}"
+			                     press="handleSaveActiveVersionHandler" />
+		</semantic:saveAction>
+		<!-- <semantic:cancelAction>
+			<semantic:CancelAction visible="{= !(${state>/app/mode})}"
+			                       press="cancelVersion" />
+		</semantic:cancelAction> -->
+	</semantic:FullscreenPage>
+
+	<!-- xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" -->
+
+
+	<!-- <semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:titleHeading>
+			<Title text="{description}" />
+		</semantic:titleHeading>
+
+		<semantic:headerContent>
+			<ObjectNumber
+			/>
+		</semantic:headerContent>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:content>
+            <l:VerticalLayout>
+                <ObjectStatus title="Description" text="{description}"/>
+                <ObjectStatus title="Owner" text="{owner}"/>
+                <ObjectStatus title="Timeline" text="{timeline}"/>
+            </l:VerticalLayout>
+        </semantic:content>
+
+
+	</semantic:SemanticPage> -->
+
+</mvc:View>

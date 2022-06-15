@@ -1,0 +1,229 @@
+<mvc:View    xmlns:mvc="sap.ui.core.mvc"
+             xmlns="sap.m"
+						 xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
+						 xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+						 xmlns:smartField="sap.ui.comp.smartfield"
+						 xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+             controllerName="ns.customers.controller.tabs.Overview" height="100%">
+	<VBox width="100%" class="generalTabWrapper">
+    <l:VerticalLayout width="100%" class="sapUiMediumMarginBottom">
+  		<f:SimpleForm title="General information" maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4"
+  					  labelSpanL="4" labelSpanM="4"
+  					  emptySpanXL="0" emptySpanL="0" emptySpanM="0" columnsXL="3" columnsL="3" columnsM="3"
+  					  columnsS="3" width="100%" adjustLabelSpan="false">
+  			<f:content>
+  				<!-- 1st column -->
+  				<core:Title text=""/>
+
+          <Label text="Country / State" />
+  				<Text text="Brazil / PR - Parana"/>
+
+          <Label text="Tax Identifier" />
+  				<Text text="78.956.968/0035-22"/>
+
+          <Label text="Registration Number" />
+  				<Text text="90334892-58"/>
+
+          <Label text="Name" />
+  				<Text text="Cocari - Cooperative Agropecuaria e Industrial"/>
+
+          <Label text="Shart Name" />
+  				<Text text="Cocari"/>
+
+          <Label text="Group of Customers" />
+  				<Text text="COCARI"/>
+
+  				<!-- 2nd column -->
+  				<core:Title text=""/>
+
+  				<!-- <Label labelFor="idDurationObj" text="{i18n>durationObjLabel}"/>
+  				<Text id="idDurationObj" text="{i18n>durationObjMonthTxt}"/> -->
+
+          <Label text="TADAS Status" />
+          <ObjectStatus
+            text="Active"
+            state="Success" />
+
+          <Label text="Legal Status" />
+          <ObjectStatus
+            text="Active"
+            state="Success" />
+
+          <Label text="Suframa Status" />
+          <ObjectStatus
+            text="Active"
+            state="Success" />
+
+          <Label text="Managed by" />
+          <Text text="G. Renato"/>
+
+          <Label text="Business codes" />
+          <Text text="46.23-1-99"/>
+
+  				<!-- 3rd column -->
+  				<core:Title text=""/>
+  				<!-- <Label text="{i18n>status}" labelFor="idStatusId"/> -->
+  				<!-- <Text id="idStatusId" text="to_Status_t/obj_type_Text" /> -->
+          <VBox class="creditInfoBox">
+
+            <VBox>
+              <Label text="Total Credit Limit" />
+              <Title level="H3" text="R$ 1 500 000" />
+            </VBox>
+
+            <VBox>
+              <Label text="Available Credit Limit" />
+              <Title level="H3" text="R$ 1 500 000" />
+            </VBox>
+
+            <VBox>
+              <Label text="14 open contracts with 3 group customers" />
+            </VBox>
+
+          </VBox>
+
+  			</f:content>
+  		</f:SimpleForm>
+
+      <f:SimpleForm title="Contacts" maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4"
+  					  labelSpanL="4" labelSpanM="4"
+  					  emptySpanXL="0" emptySpanL="0" emptySpanM="0" columnsXL="3" columnsL="3" columnsM="3"
+  					  columnsS="3" width="100%" adjustLabelSpan="false" class="sapUiMediumMarginBottom">
+  			<f:content>
+  				<!-- 1st column -->
+  				<core:Title text=""/>
+
+          <Label text="Legal Address" />
+  				<Text text="Rua Candido Bastiani, S/N. Brazil, Faxinal, Parque Industrial Gino Zeni 88840-000" maxLines="4"/>
+
+
+  				<!-- 2nd column -->
+  				<core:Title text=""/>
+
+  				<!-- <Label labelFor="idDurationObj" text="{i18n>durationObjLabel}"/>
+  				<Text id="idDurationObj" text="{i18n>durationObjMonthTxt}"/> -->
+
+          <Label text="Primary Phone" />
+          <Text text="+55 (69) 3322-3509" />
+
+          <Label text="Primary Email" />
+          <Text text="contabilidade@cocari.com.br" />
+
+          <Label text="Email for documents" />
+          <Text text="nfe@cocari.com.br" />
+
+  				<!-- 3rd column -->
+  				<core:Title text=""/>
+  				<!-- <Label text="{i18n>status}" labelFor="idStatusId"/>
+  				<Text id="idStatusId" text="to_Status_t/obj_type_Text" /> -->
+
+  			</f:content>
+  		</f:SimpleForm>
+
+      <VBox>
+        <Title text="Branches" titleStyle="H4"/>
+        <Table
+  				id="table"
+  				width="auto"
+  				items="{
+  					path: '/Mitigations',
+  					sorter: {
+  						path: 'ID',
+  						descending: false
+  					}
+  				}"
+  				noDataText="{worklistView>/tableNoDataText}"
+  				growing="true"
+  				growingScrollToLoad="true"
+  				updateFinished=".onUpdateFinished">
+
+  				<headerToolbar>
+  					<Toolbar>
+  						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+  						<ToolbarSpacer />
+  						<SearchField
+  							id="searchField"
+  							tooltip="{i18n>worklistSearchTooltip}"
+  							search=".onSearch"
+  							width="auto">
+  						</SearchField>
+  					</Toolbar>
+  				</headerToolbar>
+
+  				<columns>
+  					<Column width="22rem">
+              	<Text text="Name" />
+          	</Column>
+          	<Column>
+              	<Text text="ShortName" />
+          	</Column>
+          	<Column>
+          			<Text text="Country / State" />
+          	</Column>
+  					<Column>
+          			<Text text="Tax Identifier" />
+          	</Column>
+  					<Column>
+          			<Text text="Group of customers" />
+          	</Column>
+  					<Column>
+          			<Text text="TADAS status" />
+          	</Column>
+  					<Column>
+          			<Text text="Legal status" />
+          	</Column>
+  					<Column>
+          			<Text text="Suframa status" />
+          	</Column>
+  				</columns>
+
+  				<items>
+  					<ColumnListItem
+  						type="Navigation"
+  						press=".onPress">
+  						<cells>
+  							<Label design="Bold" text="Cocari - Cooperative Agropecuaria e Industrial" />
+              	<Text text="Cocari" />
+                <Text text="Brazil / PR-Panara" />
+  							<Text text="78.956.968/0035-22" />
+  							<Text text="COCARI" />
+  							<ObjectStatus
+  								text="Active"
+  								state="Success" />
+  							<ObjectStatus
+  								text="Active"
+  								state="Success" />
+  							<ObjectStatus
+  								text="Active"
+  								state="Success" />
+  							<!-- <core:Icon
+  								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
+  								color="#8875E7" >
+  								<core:layoutData>
+  									<FlexItemData growFactor="1" />
+  								</core:layoutData>
+  							</core:Icon> -->
+  							<!-- <core:Icon
+  								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
+  								color="#8875E7" >
+  								<core:layoutData>
+  									<FlexItemData growFactor="1" />
+  								</core:layoutData>
+  							</core:Icon> -->
+  							<!-- <core:Icon
+  								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
+  								color="#8875E7" >
+  								<core:layoutData>
+  									<FlexItemData growFactor="1" />
+  								</core:layoutData>
+  							</core:Icon> -->
+
+  						</cells>
+  					</ColumnListItem>
+  				</items>
+  			</Table>
+      </VBox>
+
+  	</l:VerticalLayout>
+	</VBox>
+</mvc:View>

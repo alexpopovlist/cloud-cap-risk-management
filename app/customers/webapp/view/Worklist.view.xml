@@ -1,0 +1,127 @@
+<mvc:View
+	controllerName="ns.customers.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:core="sap.ui.core">
+
+	<semantic:FullscreenPage
+		>
+
+			<!-- <semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}" />
+		</semantic:titleHeading> -->
+		<semantic:content>
+			<!-- <custom:ETextHover text="FieldDesc"
+					allowHover="true"
+					hoverIn="onShowAvailabilityInfo"/> -->
+			<Table class="sapUiMediumMargin"
+				id="table"
+				width="auto"
+				items="{
+					path: '/Mitigations',
+					sorter: {
+						path: 'ID',
+						descending: false
+					}
+				}"
+				noDataText="{worklistView>/tableNoDataText}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished">
+
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer />
+						<SearchField
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							search=".onSearch"
+							width="auto">
+						</SearchField>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns>
+					<Column width="22rem">
+            	<Text text="Name" />
+        	</Column>
+        	<Column>
+            	<Text text="ShortName" />
+        	</Column>
+        	<Column>
+        			<Text text="Country / State" />
+        	</Column>
+					<Column>
+        			<Text text="Tax Identifier" />
+        	</Column>
+					<Column>
+        			<Text text="Group of customers" />
+        	</Column>
+					<Column>
+        			<Text text="TADAS status" />
+        	</Column>
+					<Column>
+        			<Text text="Legal status" />
+        	</Column>
+					<Column>
+        			<Text text="Suframa status" />
+        	</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press=".onPress">
+						<cells>
+							<Label design="Bold" text="Cocari - Cooperative Agropecuaria e Industrial" />
+            	<Text text="Cocari" />
+              <Text text="Brazil / PR-Panara" />
+							<Text text="78.956.968/0035-22" />
+							<Text text="COCARI" />
+							<ObjectStatus
+								text="Active"
+								state="Success" />
+							<ObjectStatus
+								text="Active"
+								state="Success" />
+							<ObjectStatus
+								text="Active"
+								state="Success" />
+							<!-- <core:Icon
+								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
+								color="#8875E7" >
+								<core:layoutData>
+									<FlexItemData growFactor="1" />
+								</core:layoutData>
+							</core:Icon> -->
+							<!-- <core:Icon
+								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
+								color="#8875E7" >
+								<core:layoutData>
+									<FlexItemData growFactor="1" />
+								</core:layoutData>
+							</core:Icon> -->
+							<!-- <core:Icon
+								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
+								color="#8875E7" >
+								<core:layoutData>
+									<FlexItemData growFactor="1" />
+								</core:layoutData>
+							</core:Icon> -->
+
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<!-- <semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction> -->
+
+
+	</semantic:FullscreenPage>
+
+</mvc:View>

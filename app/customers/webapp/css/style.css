@@ -1,0 +1,12 @@
+.z *, .z *:focus {
+	outline: none;
+}
+
+body {
+	margin: 0;
+}
+
+.creditInfoBox {
+	background-color: #c6d8ea;
+	padding: 20px
+}
