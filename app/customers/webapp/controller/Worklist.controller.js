@@ -75,6 +75,13 @@ sap.ui.define([
 			this._showObject(oEvent.getSource());
 		},
 
+		onCreateNewItem : function (oEvent) {
+			// The source is the list item that got pressed
+			// this._showObject(oEvent.getSource());
+			this.getRouter().navTo("new");
+			// NewCustomers
+		},
+
 		/**
 		 * Event handler for navigating back.
 		 * Navigate back in the browser history

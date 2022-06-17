@@ -117,9 +117,18 @@
 			</Table>
 		</semantic:content>
 
-		<!-- <semantic:sendEmailAction>
-			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
-		</semantic:sendEmailAction> -->
+		<!-- <semantic:saveAction>
+			<semantic:SaveAction press="onCreateNewItem"/>
+		</semantic:saveAction> -->
+
+		<semantic:customFooterContent>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button press="onCreateNewItem"
+						text="Create new customer"
+						type="Emphasized"/>
+			</Toolbar>
+		</semantic:customFooterContent>
 
 
 	</semantic:FullscreenPage>

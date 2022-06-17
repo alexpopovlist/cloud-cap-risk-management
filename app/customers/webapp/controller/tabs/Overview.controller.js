@@ -26,6 +26,7 @@ sap.ui.define([
 					// this.do(this.processLoad.bind(this), [true]);
 				// }
 			},
+
 			/**
 			 * Загружает данные для вкладки Основная Информация.
 			 * @param {boolean} [bTabReload] Если true, то обновляет/задает биндинг таблицы участников рабочей группы.

@@ -95,7 +95,8 @@
 
           <uxap:heading>
 			         <HBox wrap="Wrap" fitContainer="false" alignItems="Center" class="sapUiTinyMarginTop">
-				             <Title text="Cocari - Cooperative Agropecuaria e Industrial" wrapping="true" class="sapUiTinyMarginEnd"/>
+				             <Title text="Cocari - Cooperative Agropecuaria e Industrial" wrapping="true" class="sapUiTinyMarginEnd" visible="{= ${objectView>/new} === false}"/>
+										 <Title text="New customer" wrapping="true" class="sapUiTinyMarginEnd" visible="{= ${objectView>/new} === true}"/>
 				       </HBox>
 		      </uxap:heading>
 
@@ -121,7 +122,8 @@
 							                                   hAlign="Center"
 							                                   press="onEditPressHandler"
 							                                   hideText="false"
-							                                   hideIcon="true"/>
+							                                   hideIcon="true"
+																								 visible="{= ${objectView>/mode} === 'view'}"/>
 
 							<!-- <uxap:ObjectPageHeaderActionButton type="Transparent" id="action_2"
 							                                   text="{i18n>toInitiateOpeningButtonInObjectPage}"
@@ -149,7 +151,7 @@
 					<!-- </uxap:ObjectPageHeader> -->
 				</uxap:headerTitle>
 				<uxap:headerContent>
-					<l:VerticalLayout id="headerColumn1" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
+					<l:VerticalLayout id="headerColumn1" class="sapUiMediumMarginEnd sapUiSmallMarginBottom" visible="{= ${objectView>/new} === false}">
 						<VBox>
 							<HBox alignItems="Inherit">
 								<ObjectStatus
@@ -179,7 +181,8 @@
 					<l:VerticalLayout id="headerColumn2" class="sapUiMediumMarginEnd sapUiSmallMarginBottom">
 						<VBox>
 							<HBox alignItems="Inherit">
-								<Label text="Verified with MDAS on 25.02.22 10:29" />
+								<Label text="Verified with MDAS on 25.02.22 10:29" visible="{= ${objectView>/new} === false}"/>
+								<Label text="Information for a new customer" visible="{= ${objectView>/new} === true}"/>
 								<!-- <Text text="stage"
 								      class="sapUiTinyMarginBegin" /> -->
 							</HBox>
@@ -189,7 +192,8 @@
 
 				<uxap:sections>
 					<uxap:ObjectPageSection id="OverviewObjectPageSection"
-					                        title="{i18n>Overview}">
+					                        title="{i18n>Overview}"
+																	visible="{= ${objectView>/new} === false}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="OverviewObjectPageSubSection"
 							                           showTitle="false">
@@ -200,7 +204,46 @@
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
 
-					<uxap:ObjectPageSection id="ProfileObjectPageSection"
+					<uxap:ObjectPageSection id="NewOverviewObjectPageSection"
+					                        title="{i18n>Overview}"
+																	visible="{= ${objectView>/new} === true}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="NewOverviewObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:NewOverview id="NewOverviewObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="TenderObjectPageSection"
+					                        title="{i18n>Tender}"
+																	visible="{= ${objectView>/new} === false}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="TenderObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Tender id="TenderObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<uxap:ObjectPageSection id="ContractObjectPageSection"
+					                        title="{i18n>Contract}"
+																	visible="{= ${objectView>/new} === false}">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection id="ContractObjectPageSubSection"
+							                           showTitle="false">
+								<uxap:blocks>
+									<blocks:Contract id="ContractObjectPageSubSectionBlock" />
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+
+					<!-- <uxap:ObjectPageSection id="ProfileObjectPageSection"
 					                        title="{i18n>Profile}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="ProfileObjectPageSubSection"
@@ -210,10 +253,11 @@
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
-					</uxap:ObjectPageSection>
+					</uxap:ObjectPageSection> -->
 
 					<uxap:ObjectPageSection id="ContactsObjectPageSection"
-					                        title="{i18n>Contacts}">
+					                        title="{i18n>Contacts}"
+																	visible="{= ${objectView>/new} === false}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="ContactsObjectPageSubSection"
 							                           showTitle="false">
@@ -225,7 +269,8 @@
 					</uxap:ObjectPageSection>
 
 					<uxap:ObjectPageSection id="DeliveriesObjectPageSection"
-					                        title="{i18n>Deliveries}">
+					                        title="{i18n>Deliveries}"
+																	visible="{= ${objectView>/new} === false}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="DeliveriesObjectPageSubSection"
 							                           showTitle="false">
@@ -237,7 +282,8 @@
 					</uxap:ObjectPageSection>
 
 					<uxap:ObjectPageSection id="InvoicesObjectPageSection"
-					                        title="{i18n>Invoices}">
+					                        title="{i18n>Invoices}"
+																	visible="{= ${objectView>/new} === false}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="InvoicesObjectPageSubSection"
 							                           showTitle="false">
@@ -249,7 +295,8 @@
 					</uxap:ObjectPageSection>
 
 					<uxap:ObjectPageSection id="CustomerServiceObjectPageSection"
-					                        title="{i18n>CustomerService}">
+					                        title="{i18n>CustomerService}"
+																	visible="{= ${objectView>/new} === false}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="CustomerServiceObjectPageSubSection"
 							                           showTitle="false">
@@ -449,7 +496,7 @@
 			                state="Clear" />
 		</semantic:draftIndicator> -->
 		<semantic:saveAction>
-			<semantic:SaveAction visible="{= !!${path: 'fc>/s/ac/ZSM_C_COMP_HEADER_TP/ZACTIVATION'}}"
+			<semantic:SaveAction visible="{= ${objectView>/mode} === 'edit'}"
 			                     press="handleSaveActiveVersionHandler" />
 		</semantic:saveAction>
 		<!-- <semantic:cancelAction>

@@ -107,7 +107,7 @@ modules:
     supported-platforms: []
 - name: nscustomers
   type: html5
-  path: app/nscustomers
+  path: app/customers
   build-parameters:
     build-result: dist
     builder: custom

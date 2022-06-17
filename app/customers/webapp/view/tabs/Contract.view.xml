@@ -1,0 +1,103 @@
+<mvc:View    xmlns:mvc="sap.ui.core.mvc"
+             xmlns="sap.m"
+						 xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
+						 xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+						 xmlns:smartField="sap.ui.comp.smartfield"
+						 xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+             controllerName="ns.customers.controller.tabs.Tender" height="100%">
+	<VBox width="100%" class="generalTabWrapper">
+    <l:VerticalLayout width="100%" class="sapUiMediumMarginBottom">
+  		<f:SimpleForm title="Contract" maxContainerCols="3" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4"
+  					  labelSpanL="4" labelSpanM="4"
+  					  emptySpanXL="0" emptySpanL="0" emptySpanM="0" columnsXL="3" columnsL="3" columnsM="3"
+  					  columnsS="3" width="100%" adjustLabelSpan="false">
+  			<f:content>
+  				<!-- 1st column -->
+  				<core:Title text=""/>
+
+          <Label text="Applications"   />
+  				<Text text="18000056, 18000057, 18000058"   />
+
+          <Label text="Assignments" />
+          <Text text="19600012, 19600016"   />
+
+          <Label text="Contract"   />
+          <Text text="BK-21/450Y (8000392273)"   />
+          <!-- <Input value="90334892-58" visible="{= ${objectView>/mode} === 'edit'}"/> -->
+
+          <Label text="Winners"   />
+          <Text text="Petróleo Brasileiro S.A."   />
+                <!-- <Input value="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'edit'}"/> -->
+
+
+  				<!-- 2nd column -->
+  				<core:Title text=""/>
+
+
+  				<!-- 3rd column -->
+  				<core:Title text=""/>
+
+  			</f:content>
+  		</f:SimpleForm>
+
+
+      <VBox   >
+        <Title text="WorkFlow" titleStyle="H4"/>
+        <Table
+  				id="table"
+  				width="auto"
+  				items="{
+  					path: 'objectView>/WorkFlowContract'
+  				}"
+  				noDataText="{worklistView>/tableNoDataText}"
+  				growing="true"
+  				growingScrollToLoad="true"
+  				updateFinished=".onUpdateFinished">
+
+  				<headerToolbar>
+  					<Toolbar>
+  						<!-- <Title id="tableHeader" text="WorkFlow"/> -->
+  						<ToolbarSpacer />
+  						<!-- <SearchField
+  							id="searchField"
+  							tooltip="{i18n>worklistSearchTooltip}"
+  							search=".onSearch"
+  							width="auto">
+  						</SearchField> -->
+  					</Toolbar>
+  				</headerToolbar>
+
+  				<columns>
+  					<Column width="20rem">
+              	<Text text="Stage" />
+          	</Column>
+          	<Column>
+              	<Text text="Plan" />
+          	</Column>
+          	<Column>
+          			<Text text="Forecast" />
+          	</Column>
+  					<Column>
+          			<Text text="Fact" />
+          	</Column>
+
+  				</columns>
+
+  				<items>
+  					<ColumnListItem
+  						type="Navigation"
+  						press=".onPress">
+  						<cells>
+  							<Label design="Bold" text="{objectView>stage}" />
+              	<Text text="{objectView>plan}" />
+                <Text text="{objectView>forecast}" />
+  							<Text text="{objectView>fact}" />
+  						</cells>
+  					</ColumnListItem>
+  				</items>
+  			</Table>
+      </VBox>
+
+  	</l:VerticalLayout>
+	</VBox>
+</mvc:View>

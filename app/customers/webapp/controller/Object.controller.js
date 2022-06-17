@@ -2,8 +2,10 @@ sap.ui.define([
 	"./BaseController",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
-	"../model/formatter"
-], function (BaseController, JSONModel, History, formatter) {
+	"../model/formatter",
+	"sap/m/MessageToast"
+
+], function (BaseController, JSONModel, History, formatter, MessageToast) {
 	"use strict";
 
 	return BaseController.extend("ns.customers.controller.Object", {
@@ -24,10 +26,35 @@ sap.ui.define([
 			// between the busy indication for loading the view's meta data
 			var oViewModel = new JSONModel({
 					busy : true,
-					delay : 0
+					delay : 0,
+					mode: "view",
+					new: false
 				});
 			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+			this.getRouter().getRoute("new").attachPatternMatched(this._onObjectMatched, this);
 			this.setModel(oViewModel, "objectView");
+
+			var aStages = [
+				{"stage": "PR Creating a purchase requisition", "plan": "31.01.2022", "forecast": "31.01.2022", "fact":"31.01.2022"},
+				{"stage": "ITB Approval of the invitation to bid package", "plan": "28.02.2022", "forecast": "28.02.2022", "fact":"28.02.2022"},
+				{"stage": "RFQ Sending an invitation to participate", "plan": "04.03.2022", "forecast": "04.03.2022", "fact":"04.03.2022"},
+				{"stage": "RFQ Submission of proposals", "plan": "24.03.2022", "forecast": "24.03.2022", "fact":"24.03.2022"},
+				{"stage": "TBE Technical evaluation approval", "plan": "24.04.2022", "forecast": "24.04.2022", "fact":"24.04.2022"},
+				{"stage": "CBE Commercial appraisal approval", "plan": "25.04.2022", "forecast": "25.04.2022", "fact":"25.04.2022"},
+				{"stage": "RTAI Send to committee", "plan": "28.04.2022", "forecast": "29.04.2022", "fact":"29.04.2022"},
+				{"stage": "RTA Committee", "plan": "12.05.2022", "forecast": "12.05.2022", "fact":"12.05.2022"}
+			];
+
+			var aStagesContract = [
+				{"stage": "Launch of SAP approval", "plan": "", "forecast": "", "fact":"waiting"},
+				{"stage": "SAP contract approval", "plan": "", "forecast": "", "fact":"waiting"},
+				{"stage": "Obtaining corporate approval", "plan": "-", "forecast": "-", "fact":"not required"},
+				{"stage": "CDS contract signing", "plan": "waiting", "forecast": "waiting", "fact":"waiting"}
+			]
+
+			oViewModel.setProperty('/WorkFlow', aStages);
+			oViewModel.setProperty('/WorkFlowContract', aStagesContract);
+			// this.setModel(oViewModel, "state");
 		},
 		/* =========================================================== */
 		/* event handlers                                              */
@@ -62,7 +89,14 @@ sap.ui.define([
 		 */
 		_onObjectMatched : function (oEvent) {
 			var sObjectId =  oEvent.getParameter("arguments").objectId;
-			this._bindView("/Mitigations" + sObjectId);
+			if (!!sObjectId){
+				this._bindView("/Mitigations" + sObjectId);
+			} else {
+				var oViewModel = this.getModel("objectView");
+				oViewModel.setProperty("/busy", false);
+				oViewModel.setProperty("/new", true);
+				oViewModel.setProperty("/mode", "edit");
+			}
 		},
 
 		/**
@@ -112,6 +146,25 @@ sap.ui.define([
 				oViewModel.setProperty("/shareSendEmailMessage",
 					oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
 			}).bind(this));
+		},
+
+		onEditPressHandler: function() {
+			var oStateModel = this.getModel("objectView");
+			oStateModel.setProperty("/mode", "edit");
+		},
+
+		handleSaveActiveVersionHandler: function() {
+			var oStateModel = this.getModel("objectView"),
+					oViewModel = this.getModel("objectView");
+
+			if (oViewModel.getProperty("/new")) {
+				oStateModel.setProperty("/mode", "view");
+				oStateModel.setProperty("/new", false);
+				this.getRouter().navTo("worklist", {}, true);
+				MessageToast.show('Create new customer successful');
+			} else {
+				oStateModel.setProperty("/mode", "view");
+			}
 		}
 
 	});

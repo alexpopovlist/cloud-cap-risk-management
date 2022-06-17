@@ -19,12 +19,12 @@
   				<Text text="Brazil / PR - Parana" visible="{= ${objectView>/mode} === 'view'}"/>
 
           <Label text="Registration Country" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="Brazil" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Tax Identifier" />
           <VBox>
   				      <Text text="78.956.968/0035-22" visible="{= ${objectView>/mode} === 'view'}"/>
-                <Input value="78.956.968/0035-22" visible="{= ${objectView>/mode} === 'edit'}"/>
+                <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
           </VBox>
 
           <Label text="Registration Number" visible="{= ${objectView>/mode} === 'view'}"/>
@@ -42,22 +42,22 @@
           <Label text="Group of Customers" />
           <VBox>
   				      <Text text="COCARI" visible="{= ${objectView>/mode} === 'view'}"/>
-                <Input value="COCARI" visible="{= ${objectView>/mode} === 'edit'}"/>
+                <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
           </VBox>
 
   				<!-- 2nd column -->
   				<core:Title text=""/>
 
           <Label text="State" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="PR - Parana" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
 
           <Label text="Registration Number" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="90334892-58" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="TADAS Status" visible="{= ${objectView>/mode} === 'view'}"/>
           <ObjectStatus
-            text="Active"
+            text="New"
             state="Success" visible="{= ${objectView>/mode} === 'view'}"/>
 
           <Label text="Legal Status" />
@@ -66,7 +66,7 @@
               visible="{= ${objectView>/mode} === 'view'}"
               text="Active"
               state="Success" />
-            <Input value="Active" visible="{= ${objectView>/mode} === 'edit'}"/>
+            <Input value="New" visible="{= ${objectView>/mode} === 'edit'}"/>
           </VBox>
 
           <Label text="Suframa Status" visible="{= ${objectView>/mode} === 'view'}"/>
@@ -82,16 +82,16 @@
           <Text text="46.23-1-99" visible="{= ${objectView>/mode} === 'view'}"/>
 
           <Label text="Legal Form" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="Cooperative" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
   				<!-- 3rd column -->
   				<core:Title text=""/>
 
           <Label text="Name" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Short Name" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="Cocari" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
       		<!-- <Label text="{i18n>status}" labelFor="idStatusId"/> -->
   				<!-- <Text id="idStatusId" text="to_Status_t/obj_type_Text" /> -->
@@ -129,7 +129,7 @@
   				<Text text="Rua Candido Bastiani, S/N. Brazil, Faxinal, Parque Industrial Gino Zeni 88840-000" maxLines="4" visible="{= ${objectView>/mode} === 'view'}"/>
 
           <Label text="Primary Phone" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="+55 (69) 3322-3509" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
 
   				<!-- 2nd column -->
@@ -144,7 +144,7 @@
           <Label text="Primary Email" />
           <VBox>
             <Text text="contabilidade@cocari.com.br" visible="{= ${objectView>/mode} === 'view'}" />
-            <Input value="contabilidade@cocari.com.br" visible="{= ${objectView>/mode} === 'edit'}"/>
+            <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
           </VBox>
 
           <Label text="Email for documents" visible="{= ${objectView>/mode} === 'view'}"/>
@@ -154,7 +154,7 @@
   				<core:Title text=""/>
 
           <Label text="Email for documents" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="nfe@cocari.com.br" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
   			</f:content>
   		</f:SimpleForm>
@@ -168,10 +168,10 @@
   				<core:Title text=""/>
 
           <Label text="City" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="Faxinal" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Street" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="Rua Candido Bastiani" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Instructions" visible="{= ${objectView>/mode} === 'edit'}" />
           <Input value="" visible="{= ${objectView>/mode} === 'edit'}" placeholder="No special instructions"/>
@@ -184,89 +184,19 @@
   				<Text id="idDurationObj" text="{i18n>durationObjMonthTxt}"/> -->
 
           <Label text="City district" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="Parque Industrial Gino Zeni" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Number" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="S/N" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
   				<!-- 3rd column -->
   				<core:Title text=""/>
 
           <Label text="ZIP" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="86840-000" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
 
   			</f:content>
   		</f:SimpleForm>
-
-      <VBox visible="{= ${objectView>/mode} === 'view'}">
-        <Title text="Branches" titleStyle="H4"/>
-        <Table
-  				id="table"
-  				width="auto"
-  				items="{
-  					path: '/Mitigations',
-  					sorter: {
-  						path: 'ID',
-  						descending: false
-  					}
-  				}"
-  				noDataText="{worklistView>/tableNoDataText}"
-  				growing="true"
-  				growingScrollToLoad="true"
-  				updateFinished=".onUpdateFinished">
-
-  				<headerToolbar>
-  					<Toolbar>
-  						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
-  						<ToolbarSpacer />
-  						<SearchField
-  							id="searchField"
-  							tooltip="{i18n>worklistSearchTooltip}"
-  							search=".onSearch"
-  							width="auto">
-  						</SearchField>
-  					</Toolbar>
-  				</headerToolbar>
-
-  				<columns>
-  					<Column width="20rem">
-              	<Text text="Name" />
-          	</Column>
-          	<Column>
-              	<Text text="Tax Identifier" />
-          	</Column>
-          	<Column>
-          			<Text text="Registration Number" />
-          	</Column>
-  					<Column>
-          			<Text text="State" />
-          	</Column>
-  					<Column>
-          			<Text text="City" />
-          	</Column>
-  					<Column>
-          			<Text text="Status" />
-          	</Column>
-  				</columns>
-
-  				<items>
-  					<ColumnListItem
-  						type="Navigation"
-  						press=".onPress">
-  						<cells>
-  							<Label design="Bold" text="Cocari - Cooperative Agropecuaria" />
-              	<Text text="78.956.968/0035-22" />
-                <Text text="108015939" />
-  							<Text text="GO" />
-                <Text text="GUARDA-MOR" />
-  							<ObjectStatus
-  								text="Active"
-  								state="Success" />
-  						</cells>
-  					</ColumnListItem>
-  				</items>
-  			</Table>
-      </VBox>
 
   	</l:VerticalLayout>
 	</VBox>

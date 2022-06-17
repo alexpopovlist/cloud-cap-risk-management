@@ -95,7 +95,9 @@
                     "groupId": "$direct",
                     "synchronizationMode": "None",
                     "autoExpandSelect": true
-                }
+                },
+
+                "defaultBindingMode": "TwoWay"
             }
         },
         "routing": {
@@ -126,6 +128,13 @@
                     "target": [
                         "object"
                     ]
+                },
+                {
+                    "pattern": "New/Customers",
+                    "name": "new",
+                    "target": [
+                        "new"
+                    ]
                 }
             ],
             "targets": {
@@ -136,6 +145,12 @@
                     "title": "{i18n>worklistViewTitle}"
                 },
                 "object": {
+                    "viewName": "Object",
+                    "viewId": "object",
+                    "viewLevel": 2,
+                    "title": "{i18n>objectViewTitle}"
+                },
+                "new": {
                     "viewName": "Object",
                     "viewId": "object",
                     "viewLevel": 2,
