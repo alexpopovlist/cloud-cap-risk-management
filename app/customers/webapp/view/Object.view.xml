@@ -192,8 +192,7 @@
 
 				<uxap:sections>
 					<uxap:ObjectPageSection id="OverviewObjectPageSection"
-					                        title="{i18n>Overview}"
-																	visible="{= ${objectView>/new} === false}">
+					                        title="{i18n>Overview}">
 						<uxap:subSections>
 							<uxap:ObjectPageSubSection id="OverviewObjectPageSubSection"
 							                           showTitle="false">
@@ -204,7 +203,7 @@
 						</uxap:subSections>
 					</uxap:ObjectPageSection>
 
-					<uxap:ObjectPageSection id="NewOverviewObjectPageSection"
+					<!-- <uxap:ObjectPageSection id="NewOverviewObjectPageSection"
 					                        title="{i18n>Overview}"
 																	visible="{= ${objectView>/new} === true}">
 						<uxap:subSections>
@@ -215,7 +214,7 @@
 								</uxap:blocks>
 							</uxap:ObjectPageSubSection>
 						</uxap:subSections>
-					</uxap:ObjectPageSection>
+					</uxap:ObjectPageSection> -->
 
 					<uxap:ObjectPageSection id="TenderObjectPageSection"
 					                        title="{i18n>Tender}"

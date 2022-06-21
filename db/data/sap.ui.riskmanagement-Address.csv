@@ -1,0 +1,16 @@
+ID,type,region,country,state,ZIP
+1,1,Europe,France,FR01,123456
+2,1,Europe,UK,AUC1
+3,1,Europe,Germany,DE20
+4,1,Europe,Italy,DEC1
+5,1,Europe,Finland,SUO1
+6,1,Europe,Ireland,IRE1
+7,1,Europe,Spain,ES01
+8,1,Europe,Portugal,PO01
+9,1,North America,USA,1710
+10,1,North America,Mexico,MX01
+11,1,North America,Canada,CA01
+12,1,Asia,Japan,JP01
+13,1,Asia,Malaysia,ML01
+14,1,Asia,China,CH01
+15,1,Asia,India,IN01

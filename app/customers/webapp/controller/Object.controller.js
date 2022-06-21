@@ -3,9 +3,10 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
 	"../model/formatter",
-	"sap/m/MessageToast"
+	"sap/m/MessageToast",
+	"sap/base/util/uid"
 
-], function (BaseController, JSONModel, History, formatter, MessageToast) {
+], function (BaseController, JSONModel, History, formatter, MessageToast, uid) {
 	"use strict";
 
 	return BaseController.extend("ns.customers.controller.Object", {
@@ -28,7 +29,15 @@ sap.ui.define([
 					busy : true,
 					delay : 0,
 					mode: "view",
-					new: false
+					new: false,
+					customer: {
+						"ShortName": "",
+						"Name": "",
+						"RegistrationNumber": "",
+						"RegistrationCountry": "",
+						"TaxID": "",
+						"RegistrationState": ""
+					}
 				});
 			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 			this.getRouter().getRoute("new").attachPatternMatched(this._onObjectMatched, this);
@@ -90,12 +99,27 @@ sap.ui.define([
 		_onObjectMatched : function (oEvent) {
 			var sObjectId =  oEvent.getParameter("arguments").objectId;
 			if (!!sObjectId){
-				this._bindView("/Mitigations" + sObjectId);
+				this._bindView("/LegalInformation" + sObjectId);
 			} else {
 				var oViewModel = this.getModel("objectView");
 				oViewModel.setProperty("/busy", false);
 				oViewModel.setProperty("/new", true);
 				oViewModel.setProperty("/mode", "edit");
+
+				var oEntry = {
+					LegalInformation:{
+						"Name": "Name",
+						"ShortName": "ShortName"
+					},
+				};
+
+				var sPath = this.getModel().createEntry("/Customer", {
+					properties: oEntry,
+					refreshAfterChange: true
+				}).getPath();
+
+				this.getView().bindElement({path: sPath});
+
 			}
 		},
 
@@ -125,7 +149,8 @@ sap.ui.define([
 		_onBindingChange : function () {
 			var oView = this.getView(),
 				oViewModel = this.getModel("objectView"),
-				oElementBinding = oView.getElementBinding();
+				oElementBinding = oView.getElementBinding(),
+				oModel = this.getModel();
 
 			// No data for the binding
 			if (!oElementBinding.getBoundContext()) {
@@ -133,19 +158,28 @@ sap.ui.define([
 				return;
 			}
 
-			var oResourceBundle = this.getResourceBundle();
+			var oResourceBundle = this.getResourceBundle(),
+					sPath = oView.getBindingContext().getPath();
 
-			oView.getBindingContext().requestObject().then((function (oObject) {
-				var sObjectId = oObject.ID,
-					sObjectName = oObject.ID;
+			// oView.getBindingContext().requestObject().then((function (oObject) {
+			// 	var sObjectId = oObject.ID,
+			// 		sObjectName = oObject.ID;
+			//
+			//
+			// 	oViewModel.setProperty("/busy", false);
+			// 	// oViewModel.setProperty("/shareSendEmailSubject",
+			// 	// oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
+			// 	// oViewModel.setProperty("/shareSendEmailMessage",
+			// 		// oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
+			// }).bind(this));
 
+			oModel.read(sPath, {
+				success: function(oData){
+						var oViewModel = this.getModel("objectView");
 
-				oViewModel.setProperty("/busy", false);
-				oViewModel.setProperty("/shareSendEmailSubject",
-					oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
-				oViewModel.setProperty("/shareSendEmailMessage",
-					oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
-			}).bind(this));
+						oViewModel.setProperty("/busy", false);
+					}.bind(this)
+				})
 		},
 
 		onEditPressHandler: function() {
@@ -155,13 +189,43 @@ sap.ui.define([
 
 		handleSaveActiveVersionHandler: function() {
 			var oStateModel = this.getModel("objectView"),
-					oViewModel = this.getModel("objectView");
+					oViewModel = this.getModel("objectView"),
+					oNewItem = oViewModel.getProperty("/customer");
 
 			if (oViewModel.getProperty("/new")) {
 				oStateModel.setProperty("/mode", "view");
 				oStateModel.setProperty("/new", false);
 				this.getRouter().navTo("worklist", {}, true);
-				MessageToast.show('Create new customer successful');
+
+
+				this.getModel().create("/LegalInformation", oNewItem, {
+					success: function(oData, response) {
+						var oCustomer = {
+							"ShortName": "",
+							"Name": "",
+							"RegistrationNumber": "",
+							"RegistrationCountry": "",
+							"TaxID": "",
+							"RegistrationState": ""
+						};
+
+						var oViewModel = this.getModel("objectView");
+
+						oViewModel.setProperty("/customer", oCustomer);
+						//sap.ui.core.BusyIndicator.hide();
+						// if (mSettings.success) {
+						// 	mSettings.success.call(this, oData, response);
+						// }
+					}.bind(this),
+					error: function(oError) {
+						//sap.ui.core.BusyIndicator.hide();
+						// if (mSettings.error) {
+						// 	mSettings.error.call(this, oError);
+						// }
+						debugger;
+					}.bind(this),
+				})
+				// MessageToast.show('Create new customer successful');
 			} else {
 				oStateModel.setProperty("/mode", "view");
 			}

@@ -15,45 +15,45 @@
   				<!-- 1st column -->
   				<core:Title text=""/>
 
-          <Label text="Country / State" visible="{= ${objectView>/mode} === 'view'}"/>
-  				<Text text="Brazil / PR - Parana" visible="{= ${objectView>/mode} === 'view'}"/>
+          <!-- <Label text="Country / State" visible="{= ${objectView>/mode} === 'view'}"/> -->
+  				<!-- <Text text="{objectView>/customer/ShortName}" visible="{= ${objectView>/mode} === 'view'}"/> -->
 
           <Label text="Registration Country" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{objectView>/customer/RegistrationCountry}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Tax Identifier" />
           <VBox>
   				      <Text text="78.956.968/0035-22" visible="{= ${objectView>/mode} === 'view'}"/>
-                <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+                <Input value="{objectView>/customer/TaxID}" visible="{= ${objectView>/mode} === 'edit'}"/>
           </VBox>
 
-          <Label text="Registration Number" visible="{= ${objectView>/mode} === 'view'}"/>
-          <Text text="90334892-58" visible="{= ${objectView>/mode} === 'view'}"/>
+          <!-- <Label text="Registration Number" visible="{= ${objectView>/mode} === 'view'}"/> -->
+          <!-- <Text text="{objectView>/customer/RegistrationNumber}" visible="{= ${objectView>/mode} === 'view'}"/> -->
           <!-- <Input value="90334892-58" visible="{= ${objectView>/mode} === 'edit'}"/> -->
 
-          <Label text="Name" visible="{= ${objectView>/mode} === 'view'}"/>
-          <Text text="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'view'}"/>
+          <!-- <Label text="Name" visible="{= ${objectView>/mode} === 'view'}"/> -->
+          <!-- <Text text="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'view'}"/> -->
                 <!-- <Input value="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'edit'}"/> -->
 
-          <Label text="Shart Name" visible="{= ${objectView>/mode} === 'view'}"/>
-          <Text text="Cocari" visible="{= ${objectView>/mode} === 'view'}"/>
+          <!-- <Label text="Shart Name" visible="{= ${objectView>/mode} === 'view'}"/> -->
+          <!-- <Text text="Cocari" visible="{= ${objectView>/mode} === 'view'}"/> -->
                 <!-- <Input value="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'edit'}"/> -->
 
           <Label text="Group of Customers" />
           <VBox>
   				      <Text text="COCARI" visible="{= ${objectView>/mode} === 'view'}"/>
-                <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+                <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
           </VBox>
 
   				<!-- 2nd column -->
   				<core:Title text=""/>
 
           <Label text="State" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{objectView>/customer/RegistrationState}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
 
           <Label text="Registration Number" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{objectView>/customer/RegistrationNumber}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="TADAS Status" visible="{= ${objectView>/mode} === 'view'}"/>
           <ObjectStatus
@@ -66,7 +66,7 @@
               visible="{= ${objectView>/mode} === 'view'}"
               text="Active"
               state="Success" />
-            <Input value="New" visible="{= ${objectView>/mode} === 'edit'}"/>
+            <Input value="New" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
           </VBox>
 
           <Label text="Suframa Status" visible="{= ${objectView>/mode} === 'view'}"/>
@@ -82,16 +82,16 @@
           <Text text="46.23-1-99" visible="{= ${objectView>/mode} === 'view'}"/>
 
           <Label text="Legal Form" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
   				<!-- 3rd column -->
   				<core:Title text=""/>
 
           <Label text="Name" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{objectView>/customer/Name}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Short Name" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{objectView>/customer/ShortName}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
       		<!-- <Label text="{i18n>status}" labelFor="idStatusId"/> -->
   				<!-- <Text id="idStatusId" text="to_Status_t/obj_type_Text" /> -->
@@ -129,7 +129,7 @@
   				<Text text="Rua Candido Bastiani, S/N. Brazil, Faxinal, Parque Industrial Gino Zeni 88840-000" maxLines="4" visible="{= ${objectView>/mode} === 'view'}"/>
 
           <Label text="Primary Phone" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
 
   				<!-- 2nd column -->
@@ -144,7 +144,7 @@
           <Label text="Primary Email" />
           <VBox>
             <Text text="contabilidade@cocari.com.br" visible="{= ${objectView>/mode} === 'view'}" />
-            <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+            <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
           </VBox>
 
           <Label text="Email for documents" visible="{= ${objectView>/mode} === 'view'}"/>
@@ -154,7 +154,7 @@
   				<core:Title text=""/>
 
           <Label text="Email for documents" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
   			</f:content>
   		</f:SimpleForm>
@@ -168,13 +168,13 @@
   				<core:Title text=""/>
 
           <Label text="City" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
           <Label text="Street" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
           <Label text="Instructions" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" placeholder="No special instructions"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" placeholder="No special instructions" enabled="false"/>
 
 
   				<!-- 2nd column -->
@@ -184,16 +184,16 @@
   				<Text id="idDurationObj" text="{i18n>durationObjMonthTxt}"/> -->
 
           <Label text="City district" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
           <Label text="Number" visible="{= ${objectView>/mode} === 'edit'}" />
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
   				<!-- 3rd column -->
   				<core:Title text=""/>
 
           <Label text="ZIP" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="" visible="{= ${objectView>/mode} === 'edit'}" enabled="false"/>
 
   			</f:content>
   		</f:SimpleForm>

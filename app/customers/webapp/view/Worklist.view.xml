@@ -19,11 +19,8 @@
 				id="table"
 				width="auto"
 				items="{
-					path: '/Mitigations',
-					sorter: {
-						path: 'ID',
-						descending: false
-					}
+					path: '/Customer',
+					parameters: {expand: 'LegalInformation'}
 				}"
 				noDataText="{worklistView>/tableNoDataText}"
 				growing="true"
@@ -54,19 +51,31 @@
         			<Text text="Country / State" />
         	</Column>
 					<Column>
-        			<Text text="Tax Identifier" />
+        			<Text text="CNPJ" />
         	</Column>
 					<Column>
-        			<Text text="Group of customers" />
+        			<Text text="Reg. Number" />
         	</Column>
 					<Column>
-        			<Text text="TADAS status" />
+        			<Text text="Reg. Number" />
         	</Column>
 					<Column>
-        			<Text text="Legal status" />
+        			<Text text="Economic Group" />
         	</Column>
 					<Column>
-        			<Text text="Suframa status" />
+        			<Text text="Legal" />
+        	</Column>
+					<Column>
+        			<Text text="Commercial" />
+        	</Column>
+					<Column>
+        			<Text text="Finance" />
+        	</Column>
+					<Column>
+        			<Text text="Credit" />
+        	</Column>
+					<Column>
+        			<Text text="Logistics" />
         	</Column>
 				</columns>
 
@@ -75,20 +84,23 @@
 						type="Navigation"
 						press=".onPress">
 						<cells>
-							<Label design="Bold" text="Cocari - Cooperative Agropecuaria e Industrial" />
-            	<Text text="Cocari" />
-              <Text text="Brazil / PR-Panara" />
-							<Text text="78.956.968/0035-22" />
-							<Text text="COCARI" />
+							<Label design="Bold" text="{LegalInformation/ShortName}" />
+            	<Text text="{LegalInformation/Name}" />
+              <Text text="{= ${LegalInformation/RegistrationCountry} + '/ ' + ${LegalInformation/RegistrationState} }" />
+							<Text text="{TaxID}" />
+							<Text text="{RegNumber}" />
+							<Text text="{EconomicGroup}" />
 							<ObjectStatus
 								text="Active"
 								state="Success" />
 							<ObjectStatus
-								text="Active"
+								text="{Commercial}"
 								state="Success" />
 							<ObjectStatus
-								text="Active"
+								text="{Finance}"
 								state="Success" />
+							<Text text="{Credit}" />
+							<Text text="{Logistics}" />
 							<!-- <core:Icon
 								src="sap-icon://BusinessSuiteInAppSymbols/icon-completed"
 								color="#8875E7" >

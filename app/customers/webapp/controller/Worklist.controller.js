@@ -78,6 +78,18 @@ sap.ui.define([
 		onCreateNewItem : function (oEvent) {
 			// The source is the list item that got pressed
 			// this._showObject(oEvent.getSource());
+			
+			// var oEntry = {
+			// 	LegalInformation:{
+			// 		"Name": ""
+			// 	},
+			// };
+			//
+			// var sPath = this.getModel().createEntry("/Customer", {
+			// 	properties: oEntry,
+			// 	refreshAfterChange: true
+			// }).getPath();
+
 			this.getRouter().navTo("new");
 			// NewCustomers
 		},
@@ -135,12 +147,14 @@ sap.ui.define([
 		_showObject : function (oItem) {
 			var that = this;
 
-			oItem.getBindingContext().requestCanonicalPath().then(function (sObjectPath) {
+			// oItem.getBindingContext().requestCanonicalPath().then(function (sObjectPath) {
+			var sObjectPath = oItem.getBindingContext().getPath();
+
 				that.getRouter().navTo("object", {
 					objectId_Old: oItem.getBindingContext().getProperty("ID"),
-					objectId : sObjectPath.slice("/Mitigations".length) // /Products(3)->(3)
+					objectId : sObjectPath.slice("/LegalInformation".length) // /Products(3)->(3)
 				});
-			});
+			// });
 		},
 
 		/**

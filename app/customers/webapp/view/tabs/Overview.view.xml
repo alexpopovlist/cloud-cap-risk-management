@@ -88,10 +88,10 @@
   				<core:Title text=""/>
 
           <Label text="Name" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="Cocari - Cooperative Agropecuaria e Industrial" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{LegalInformation/Name}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
           <Label text="Short Name" visible="{= ${objectView>/mode} === 'edit'}"/>
-          <Input value="Cocari" visible="{= ${objectView>/mode} === 'edit'}"/>
+          <Input value="{LegalInformation/ShortName}" visible="{= ${objectView>/mode} === 'edit'}"/>
 
       		<!-- <Label text="{i18n>status}" labelFor="idStatusId"/> -->
   				<!-- <Text id="idStatusId" text="to_Status_t/obj_type_Text" /> -->
@@ -204,7 +204,7 @@
   				id="table"
   				width="auto"
   				items="{
-  					path: '/Mitigations',
+  					path: '/LegalInformation',
   					sorter: {
   						path: 'ID',
   						descending: false

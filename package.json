@@ -13,6 +13,7 @@
     "passport": "^0.5.0"
   },
   "devDependencies": {
+    "@sap/cds-odata-v2-adapter-proxy": "^1.8.20",
     "@sap/ux-specification": "^1.100.2",
     "sqlite3": "^5.0.2"
   },
@@ -86,5 +87,44 @@
     "hana": {
       "deploy-format": "hdbtable"
     }
+  },
+  "build": {
+    "target": "gen",
+    "tasks": [
+      {
+        "for": "hana",
+        "src": "db",
+        "options": {
+          "model": [
+            "db",
+            "srv2",
+            "app",
+            "srv"
+          ]
+        }
+      },
+      {
+        "for": "node-cf",
+        "src": "srv",
+        "options": {
+          "model": [
+            "db",
+            "app",
+            "srv"
+          ]
+        }
+      },
+      {
+        "for": "node-cf",
+        "src": "srv2",
+        "options": {
+          "model": [
+            "db",
+            "app",
+            "srv2"
+          ]
+        }
+      }
+    ]
   }
 }

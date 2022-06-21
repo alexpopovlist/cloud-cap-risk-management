@@ -31,4 +31,8 @@ service RiskService {
                   to : [ 'RiskViewer', 'RiskManager' ]
               }
           ]) as projection on my.Suppliers;
+
+          entity Customer as projection on my.Customer;
+          entity LegalInformation as projection on my.LegalInformation;
+          entity Address as projection on my.Address;
 }
